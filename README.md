@@ -28,6 +28,38 @@
 > Utilizaremos o cenário adaptado: **Casa Griô de Cultura e Biblioteca Ancestral Quilombola**, com foco em criar a infraestrutura para o funcionamento do **Acervo Digital de Histórias Orais e Cantigas de Capoeira do Território de Itapecuru.**
 
 ---
+## 2. Visao Geral e Cenario Atual da Casa Griô
+
+A Casa Griô de Cultura e Biblioteca Ancestral Quilombola fica no Territorio de Itapecuru. Hoje a casa tem um roteador domestico simples que atende tudo junto, sem separacao de rede. O sinal do Wi-Fi nao chega no Barracao Cultural por causa das paredes de taipa. O servidor do Acervo Oral fica em um PC comum sem IP fixo, por isso vive caindo quando muitos celulares conectam. Nao ha rack, patch panel ou identificacao de cabos.
+
+| Situacao Atual | Problema Encontrado |
+| --- | --- |
+| Internet | Link unico sem backup, sem firewall |
+| Wi-Fi | Um SSID aberto para todos, sem senha diferente para visitantes |
+| Cabeamento | Cabos soltos sem conduíte, sem padrao Cat6 |
+| Energia | Sem nobreak para manter o servidor ligado |
+
+## 3. Objetivos da Rede Vozes do Quilombo
+
+| Tipo | Objetivo |
+| --- | --- |
+| Geral | Criar uma rede hierarquica, segura e estavel para guardar e divulgar as historias orais e cantigas de capoeira |
+| Especifico 1 | Organizar o cabeamento estruturado com dois switches em cascata e garantir 1 Gbps no telecentro |
+| Especifico 2 | Separar rede interna da rede de visitantes com dois SSIDs e futuras VLANs para proteger os saberes ancestrais |
+| Especifico 3 | Garantir que o Servidor do Acervo Oral tenha IP fixo e acesso rapido para mestres e jovens |
+| Especifico 4 | Deixar a rede pronta para oficinas de letramento digital com 20 PCs simultaneos |
+
+## 4. Requisitos Tecnicos e Restricoes
+
+| Requisito | Descricao | Prioridade |
+| --- | --- | --- |
+| Desempenho | Rede cabeada Gigabit para edicao de audios e videos do acervo | Alta |
+| Seguranca | Isolamento logico entre Coordenacao e Visitantes | Alta |
+| Disponibilidade | Servidor do Acervo no ar mesmo com queda de internet | Alta |
+| Custo | Usar no maximo 2 switches, 2 APs e 1 caixa de cabo por ser projeto comunitario | Media |
+| Distancia | Nenhum lance de cabo pode passar de 90 metros por causa do limite do UTP | Alta |
+| Manutencao | Rede simples que possa ser mantida pela propria coordenacao sem equipe de TI externa | Alta |
+| Ambiente | Equipamentos em local ventilado, fechado e protegido de poeira e calor da palha e taipa | Media |
 
 # PARTE A — Compreensão do problema
 
