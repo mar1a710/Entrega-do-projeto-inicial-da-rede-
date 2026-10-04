@@ -100,14 +100,26 @@ A manutenção será feita pela própria coordenação da Casa Griô, com apoio 
 ### Parte C — Topologia inicial
 
 #### 11. Desenhe a topologia
+
+**Qual é a tipologia inicial escolhida?**
+Escolhemos uma topologia hierárquica em estrela estendida / cascata. 
+- O Roteador de Borda fica no topo, ligado ao Provedor.
+- O Switch de 8 portas do CPD é o núcleo/distribuição, onde fica o Servidor do Acervo.
+- O Switch de 24 portas do Telecentro é o acesso, ligado em cascata no Switch de 8.
+- Os 2 APs ficam na borda de acesso, ligados no Switch de 24, e os clientes Wi-Fi entram por eles.
+
+Essa é a topologia inicial da D0 - ainda sem VLANs, ainda tudo na mesma rede, só organizada fisicamente.
+
+**Desenho da topologia inicial com clientes Wi-Fi:**
+
 ```mermaid
 flowchart TD
     ISP["Provedor Internet"] --- ROUTER["Roteador de Borda"]
-    ROUTER --- SW8["Switch 8 Portas - CPD Griô"]
-    SW8 --- SRV["Servidor Acervo Oral Griô - 192.168.10.10"]
+    ROUTER --- SW8["Switch 8 Portas - CPD Griô - Núcleo"]
+    SW8 --- SRV["Servidor Acervo Oral - 192.168.10.10"]
     SW8 --- PCADM["PC Coordenação"]
     SW8 --- IMP["Impressora Rede"]
-    SW8 --- SW24["Switch 24 Portas - Telecentro"]
+    SW8 --- SW24["Switch 24 Portas - Telecentro - Acesso"]
     SW24 --- PCS["20 PCs Telecentro"]
     SW24 --- AP1["AP 1 - Telecentro"]
     SW24 --- AP2["AP 2 - Barracão"]
@@ -115,8 +127,8 @@ flowchart TD
     AP2 -. "Wi-Fi" .- WIFI2["Visitantes / Comunidade - Celulares"]
 ```
 
-**Explicação da topologia corrigida:**
-O tráfego entra e sai somente pelo Roteador de Borda ligado ao Provedor de Internet. O Switch de 8 portas na Sala Técnica / CPD é o ponto central da rede. O Servidor do Acervo Oral está conectado diretamente nele para facilitar a centralização e ter conexão Gigabit direta ao núcleo da LAN. O Switch de 24 portas do Telecentro é ligado em cascata no Switch de 8. Os clientes Wi-Fi entram na LAN através dos 2 APs ligados no Switch de 24 portas. Como mostra o diagrama com linha pontilhada, notebooks e celulares se conectam via Wi-Fi ao AP1 no Telecentro e ao AP2 no Barracão Cultural. Todo equipamento listado nos recursos aparece no desenho, incluindo os clientes sem fio.
+**Explicação do fluxo de tráfego:**
+O tráfego entra e sai somente pelo Roteador de Borda. O Switch de 8 portas na Sala Técnica é o ponto central. O Servidor do Acervo está nele para facilitar a centralização e ter conexão Gigabit direta ao núcleo da LAN. O Switch de 24 portas do Telecentro é ligado em cascata no Switch de 8. Os clientes Wi-Fi entram na LAN através dos 2 APs, como mostra a linha pontilhada Wi-Fi no diagrama. Todo equipamento aparece no desenho, incluindo os clientes sem fio WIFI1 e WIFI2.
 
 #### 12. Checklist técnico da topologia
 | Item verificado | Status Final | Correção feita |
