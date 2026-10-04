@@ -153,11 +153,46 @@ O tráfego entra e sai somente pelo Roteador de Borda ligado ao Provedor de Inte
 | Correção feita pela equipe | Redistribuímos portas livres considerando 2 APs e reescrevemos justificativas com contexto quilombola da Casa Griô |
 
 #### 19. Justificativa final da proposta
-O projeto Vozes do Quilombo atende a Casa Griô com uma rede hierárquica simples e segura, pensada para o contexto comunitário. A escolha de dois switches organiza o cabeamento: o de 8 portas fica no CPD junto ao servidor do acervo e o de 24 portas fica no telecentro. Dois pontos de acesso foram previstos porque um único AP não cobriria o Barracão e o Telecentro devido à distância e às paredes de taipa, que são premissas a validar. O servidor no switch central garante desempenho máximo para gravação das histórias orais. O roteador centraliza a internet. Decisões ainda provisórias: necessidade real de 2 SSIDs, alcance exato dos APs e necessidade de nobreak, que dependem de visita técnica.
+O projeto Vozes do Quilombo atende a Casa Griô com uma rede hierárquica simples e segura, pensada para o contexto comunitário. A escolha de dois switches organiza o cabeamento: o de 8 portas fica no CPD junto ao servidor do acervo e o de 24 portas fica no telecentro. Dois pontos de acesso foram previstos porque um único AP não cobriria o Barracão e o Telecentro devido à distância e às paredes de taipa, que são premissas a validar. O servidor fica no switch central para facilitar a centralização e ter conexão Gigabit direta ao núcleo da LAN. O roteador faz o encaminhamento e NAT e terá seu firewall confirmado no datasheet. Decisões ainda provisórias: necessidade real de 2 SSIDs, alcance exato dos APs e necessidade de nobreak.
+
+#### 20. Riscos, limitações e premissas a validar
+| Risco ou Limitação | Impacto na Casa Griô | Como vamos mitigar ou validar |
+| --- | --- | --- |
+| Paredes de taipa e palha bloquearem Wi-Fi | Sinal fraco no Barracão | Fazer site survey na D1 para confirmar alcance real dos 2 APs |
+| Distância entre CPD e Barracão maior que 90m | Cabo UTP não pode passar disso | Medir distância real com trena na visita técnica |
+| Falta de rack, patch panel e nobreak | Equipamentos soltos e sem proteção elétrica | Confirmar no local e incluir no orçamento da D1 se precisar |
+| Provedor entregar rádio e não fibra | Precisa de configuração diferente no roteador | Ver contrato do provedor e modelo da ONT |
+| Servidor do acervo com IP fixo | Se não fixar, cai o acesso | Configurar IP reservado no roteador na D1 |
+| Separação de visitantes e rede interna | Sem separação, expõe acervo | Tratar como necessidade futura, estudar VLANs na D1 |
+
+#### 21. Checklist final de aceitação
+| Critério Obrigatório | Atende? | Onde está no documento |
+| --- | --- | --- |
+| Seção 5 - Problema escrito de forma clara? | Sim | Seção 5 com premissa a validar |
+| Seção 6 - Usuários identificados com quantidade e prioridade? | Sim | Seção 6 com 4 grupos |
+| Seção 7 - Setores ou ambientes descritos? | Sim | Seção 7 com 4 setores e premissas |
+| Seção 8 - Necessidades e serviços listados? | Sim | Seção 8 com 5 necessidades |
+| Seção 9 - Recursos justificados e cálculo de portas com 2 APs? | Sim | Seção 9 com 28 usadas e 4 livres |
+| Seção 10 - Perguntas em aberto registradas? | Sim | Seção 10 com 3 itens |
+| Seção 11 - Topologia desenhada com 2 APs e clientes Wi-Fi? | Sim | Seção 11 Mermaid com AP1, AP2 e clientes sem fio |
+| Seção 12 - Checklist técnico da topologia preenchido? | Sim | Seção 12 com 5 itens corrigidos |
+| Seção 19 - Justificativa final? | Sim | Seção 19 corrigida sem afirmar desempenho máximo |
+| Seção 20 - Riscos e premissas? | Sim | Seção 20 acima |
+| Seção 22 - Organização dos arquivos? | Sim | Seção 22 abaixo |
+| Seção 23 - Síntese final da equipe? | Sim | Seção 23 abaixo |
+
+#### 22. Organização dos arquivos
+| Campo | Resposta |
+| --- | --- |
+| Nome do arquivo no repositório | D0-equipe-tambor-digital-vozes-do-quilombo.md |
+| Local de entrega | Pasta /docs no GitHub da equipe e arquivo Trilha_D0_Projeto_Inicial_da_Rede.md na raiz |
+| Padrão seguido | D0-equipe-nome-do-projeto.md conforme roteiro essencial |
+| Link do repositório | A ser preenchido pela equipe após push |
+| Versão | D0 - v5 final corrigida com seções 20, 21 e 22 |
 
 #### 23. Síntese final da equipe
 | Campo | Resposta |
 | --- | --- |
-| Decisão principal tomada | Manter servidor do Acervo Oral no switch de 8 portas do CPD perto do roteador e usar 2 APs, um para cada ambiente, para garantir cobertura e otimizar acesso |
+| Decisão principal tomada | Manter servidor do Acervo Oral no switch de 8 portas do CPD e usar 2 APs, um para cada ambiente, com clientes Wi-Fi representados no diagrama |
 | Maior dúvida restante | Como configurar a separação entre visitantes e rede interna na próxima etapa, já que na D0 tratamos apenas como necessidade futura |
-| O que precisa ser validado na próxima etapa | Medir distância real do Barracão, fazer site survey do Wi-Fi, confirmar se há rack e nobreak e confirmar com mestres griôs se o acervo deve ser acessado fora da Casa Griô |
+| O que precisa ser validado na próxima etapa | Medir distância real do Barracão, fazer site survey do Wi-Fi, confirmar se há rack e nobreak, confirmar firewall do roteador e confirmar com mestres griôs se o acervo deve ser acessado fora da Casa Griô |
